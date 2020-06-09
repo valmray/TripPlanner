@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewMyTripActivity">
+
+    <TextView
+        android:id="@+id/tv_title_view_myTrip"
+        android:layout_width="372dp"
+        android:layout_height="59dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/tv_title_singleTrip"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_view_myTrip"
+        android:layout_width="188dp"
+        android:layout_height="152dp"
+        android:layout_below="@+id/tv_description_view_myTrip"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="180dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/camera" />
+
+    <TextView
+        android:id="@+id/tv_description_view_myTrip"
+        android:layout_width="380dp"
+        android:layout_height="66dp"
+        android:layout_below="@+id/tv_title_view_myTrip"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_description_join"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_view_myTrip" />
+
+    <TextView
+        android:id="@+id/tv_date_view_myTrip"
+        android:layout_width="165dp"
+        android:layout_height="69dp"
+        android:layout_below="@+id/tv_description_view_myTrip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="180dp"
+        android:text="@string/tv_date"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_location_view_myTrip"
+        android:layout_width="160dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/tv_date_view_myTrip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/tv_location_join"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_date_view_myTrip" />
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="67dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_LeaveTrip">
+
+        <ImageView
+            android:id="@+id/iv_chat_myTrip"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/chat" />
+
+        <ImageView
+            android:id="@+id/iv_delete_myTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/delete" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_viewOnMap"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="244dp"
+        android:text="View Trip On Map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description_view_myTrip" />
+
+    <Button
+        android:id="@+id/btn_LeaveTrip"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Leave Trip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewOnMap" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">TripPlanner</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="tv_email">Email</string>
+    <string name="et_email" />
+    <string name="et_password" />
+    <string name="btn_login">Login</string>
+    <string name="btn_signUp">Sign Up</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_firstName">First Name</string>
+    <string name="et_firstName" />
+    <string name="tv_lastName">Last Name</string>
+    <string name="et_lastName" />
+    <string name="btn_newUser">New User</string>
+    <string name="rb_female">Female</string>
+    <string name="rb_male">Male</string>
+    <string name="tv_newUser_email">Email</string>
+    <string name="et_newUser_email" />
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_userFirstName" />
+    <string name="btn_ListOfUsers">List of Users</string>
+    <string name="tv_user_lastName" />
+    <string name="tv_user_gender" />
+    <string name="tv_user_email" />
+    <string name="btn_addTrip">Add Trip</string>
+    <string name="btn_removeTrip">Remove Trip</string>
+    <string name="btn_trips">Trips</string>
+    <string name="tv_title">Title:</string>
+    <string name="et_title">Title</string>
+    <string name="tv_description">Description:</string>
+    <string name="btn_submit">Submit</string>
+    <string name="tv_description_trips" />
+    <string name="tv_dates" />
+    <string name="tv_address" />
+    <string name="hint_date">Enter Date</string>
+    <string name="btn_addFriends">Add Friends</string>
+    <string name="tv_title_trips" />
+    <string name="btn_editProfile">Edit Profile</string>
+    <string name="btn_updateProfile">Update Profile</string>
+    <string name="btn_send">Send</string>
+    <string name="et_message">Enter Message</string>
+    <string name="btn_join">Join</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="tv_title_singleTrip" />
+    <string name="btn_myTrips">My Trips</string>
+    <string name="tv_description_join" />
+    <string name="tv_date" />
+    <string name="tv_location_join" />
+    <string name="btn_uploadImage">Photos</string>
+    <string name="btn_logout">Log Out</string>
+    <string name="btn_createPlan">Create Plan</string>
+    <string name="tv_message" />
+    <string name="tv_sender" />
+</resources>
