@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".CreateTripPlanActivity">
+    tools:context=".EditTripPlanActivity">
 
     <LinearLayout
-        android:id="@+id/cityPlacesLayout"
+        android:id="@+id/edit_cityPlacesLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -30,7 +30,7 @@
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/allPlacesSpinner"
+            android:id="@+id/edit_allPlacesSpinner"
             android:layout_width="150dp"
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
@@ -38,7 +38,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/addPlaceFromAllButtion"
+            android:id="@+id/edit_addPlaceFromAllButton"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -47,14 +47,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tripPlanLayout"
+        android:id="@+id/edit_tripPlanLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityPlacesLayout">
+        app:layout_constraintTop_toBottomOf="@+id/edit_cityPlacesLayout">
 
 
         <TextView
@@ -87,7 +87,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/userPlacesSpinner"
+                android:id="@+id/edit_userPlacesSpinner"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -95,15 +95,15 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/addPlaceToPlanButton"
-                android:layout_width="wrap_content"
+                android:id="@+id/edit_addPlaceToPlanButton"
+                android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
 
-                android:text="Add To Plan" />
+                android:text="Add" />
 
             <ImageButton
-                android:id="@+id/deleteUserPlaceButton"
+                android:id="@+id/edit_deleteUserPlaceButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitXY"
@@ -121,7 +121,7 @@
             android:textStyle="bold" />
 
         <ListView
-            android:id="@+id/listViewAdd"
+            android:id="@+id/edit_listViewAdd"
             android:layout_width="match_parent"
             android:layout_height="150dp"
 
@@ -136,14 +136,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/addPlanDescriptionButton"
+                android:id="@+id/edit_addPlanDescriptionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:text="Add Plan Description" />
+                android:text="Edit Plan Description" />
 
             <Button
-                android:id="@+id/resetPlanButton"
+                android:id="@+id/edit_resetPlanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
@@ -156,12 +156,25 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_done"
+        android:id="@+id/edit_btn_done"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="12dp"
         android:text="Done"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripPlanLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_btn_cancel" />
+
+    <Button
+        android:id="@+id/edit_btn_cancel"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/btn_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_tripPlanLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

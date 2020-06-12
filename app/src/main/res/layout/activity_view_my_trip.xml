@@ -80,17 +80,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_date_view_myTrip" />
 
+
     <LinearLayout
         android:layout_width="380dp"
         android:layout_height="67dp"
 
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.354"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_LeaveTrip">
 
@@ -102,33 +103,36 @@
             app:srcCompat="@drawable/chat" />
 
         <ImageView
+            android:id="@+id/btn_viewOnMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mapicon" />
+
+        <ImageView
             android:id="@+id/iv_delete_myTrip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/delete" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/btn_editTrip"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/editbutton" />
 
-    <Button
-        android:id="@+id/btn_viewOnMap"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:text="View Trip On Map"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description_view_myTrip" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_LeaveTrip"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="76dp"
         android:text="Leave Trip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_viewOnMap" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_view_myTrip" />
 </androidx.constraintlayout.widget.ConstraintLayout>

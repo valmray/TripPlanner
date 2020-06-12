@@ -73,6 +73,7 @@ public class MyTripsActivity extends AppCompatActivity {
                             bundle.putSerializable("selectedTrip", trips.get(i));
                             intentToViewTrip.putExtra("bundleData", bundle);
                             startActivityForResult(intentToViewTrip, 5);
+                            finish();
                         }
                     });
 

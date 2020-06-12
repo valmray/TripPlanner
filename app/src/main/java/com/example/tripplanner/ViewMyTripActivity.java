@@ -28,8 +28,8 @@ public class ViewMyTripActivity extends AppCompatActivity {
     public TextView tv_location_view_myTrip;
     public ImageView iv_deleteTrip;
     public ImageView iv_chatTrip;
-    public ImageView iv_coverPhoto_view_myTrip;
-    public Button view_map, leave_trip;
+    public ImageView iv_coverPhoto_view_myTrip, view_map, edit_trip;
+    public Button leave_trip;
     public Bundle extrasFromMyTrips;
     // Access a Cloud Firestore instance from your Activity
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -50,6 +50,7 @@ public class ViewMyTripActivity extends AppCompatActivity {
         tv_location_view_myTrip = findViewById(R.id.tv_location_view_myTrip);
         view_map = findViewById(R.id.btn_viewOnMap);
         leave_trip = findViewById(R.id.btn_LeaveTrip);
+        edit_trip = findViewById(R.id.btn_editTrip);
 
         extrasFromMyTrips = getIntent().getExtras().getBundle("bundleData");
 
@@ -92,7 +93,18 @@ public class ViewMyTripActivity extends AppCompatActivity {
         else
         {
             iv_deleteTrip.setVisibility(View.GONE);
+            edit_trip.setVisibility(View.GONE);
         }
+
+        edit_trip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editTripIntent = new Intent(ViewMyTripActivity.this, EditTripActivity.class);
+                editTripIntent.putExtra("Trip", selectedTrip);
+                startActivity(editTripIntent);
+                finish();
+            }
+        });
 
         leave_trip.setOnClickListener(new View.OnClickListener() {
             @Override
