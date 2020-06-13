@@ -14,8 +14,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +46,7 @@ import java.util.Map;
 public class EditTripActivity extends AppCompatActivity implements MyInterface{
     Trip selectedTrip;
     Button changeLoc, save, addRemove, editPlan, cancel;
+    Switch privacy;
     EditText title, descriptionEdit, date;
     TextView cityText;
     ImageView tripImage;
@@ -72,7 +75,9 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
     static final String VALUE_KEY_PLAN = "plan";
     static final String VALUE_KEY_PLACES = "places";
     static final String VALUE_KEY_PLAN_DESCRIPTION = "description";
+
     String description = "";
+    String privacy_text;
 
     LatLng cityLoc;
     Place chosenPlace;
@@ -123,6 +128,7 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
         cityText.setText(selectedTrip.city);
         descriptionEdit.setText(selectedTrip.description);
         date.setText(selectedTrip.date);
+        privacy = findViewById(R.id.editTrip_switch);
 
         Log.d("Current Participants", selectedTrip.people.toString());
 
@@ -133,7 +139,39 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
                 "type=restaurant&key=" + BuildConfig.GMAPS_CONSUMER_SECRET;
 
         new GetPlacesAsync(EditTripActivity.this, db, EditTripActivity.this).execute(link);
+        if(selectedTrip != null)
+        {
+            getCurrentPlan();
 
+            if(selectedTrip.privacy.equals("public"))
+            {
+                privacy.setText("Public");
+                privacy_text = "public";
+                privacy.setChecked(false);
+            }
+            else
+            {
+                privacy.setText("Private");
+                privacy_text = "private";
+                privacy.setChecked(true);
+            }
+        }
+
+        privacy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    privacy.setText("Private");
+                    privacy_text = "private";
+                }
+                else
+                {
+                    privacy.setText("Public");
+                    privacy_text = "public";
+                }
+            }
+        });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -277,7 +315,8 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
                         lat,
                         lon,
                         photoUrl,
-                        new ArrayList<Message>());
+                        new ArrayList<Message>(),
+                        privacy_text);
 
                 addRemoveParticipants(trip);
 

@@ -3,6 +3,8 @@ package com.example.tripplanner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,7 +16,10 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
@@ -100,24 +105,34 @@ public class ViewMyTripActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                for(int i = 0; i < selectedTrip.people.size(); i++)
-                {
-                    String id = (String)((Map)selectedTrip.people.get(i)).get("userId");
-                    db.collection("users").document(id).collection("trips").document(selectedTrip.trip_id).delete();
-                }
+                new AlertDialog.Builder(ViewMyTripActivity.this)
+                        .setTitle("Delete Trip")
+                        .setMessage("Are you sure you want to delete this trip?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                for(int i = 0; i < selectedTrip.people.size(); i++)
+                                {
+                                    String id = (String)((Map)selectedTrip.people.get(i)).get("userId");
+                                    db.collection("users").document(id).collection("trips").document(selectedTrip.trip_id).delete();
+                                }
 
-                db.collection("trips").document(selectedTrip.trip_id).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        setResult(ViewMyTripActivity.RESULT_OK);
-                        finish();
-                    }
-                });
+                                db.collection("trips").document(selectedTrip.trip_id).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        setResult(ViewMyTripActivity.RESULT_OK);
+                                        finish();
+                                    }
+                                });
 
-                for(int i = 0; i < chats.size(); i++)
-                {
-                    db.collection("chats").document(chats.get(i).messageId).delete();
-                }
+                                for(int i = 0; i < chats.size(); i++)
+                                {
+                                    db.collection("chats").document(chats.get(i).messageId).delete();
+                                }
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
 
             }
         });

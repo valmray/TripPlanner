@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Trip implements Serializable {
     //user id for the user who created the trip
-    public String title, city, trip_id, user_id, description, date, url;
+    public String title, city, trip_id, user_id, description, date, url, privacy;
     public Double latitude, longitude;
     public ArrayList<User> people;
     public ArrayList<Message> chat;
@@ -22,7 +22,8 @@ public class Trip implements Serializable {
                 Double latitude,
                 Double longitude,
                 String url,
-                ArrayList<Message> chat) {
+                ArrayList<Message> chat,
+                String privacy) {
         this.user_id = userId;
         this.trip_id = tripId;
         this.title = title;
@@ -34,6 +35,7 @@ public class Trip implements Serializable {
         this.longitude = longitude;
         this.url = url;
         this.chat = chat;
+        this.privacy = privacy;
 
     }
 
@@ -50,6 +52,7 @@ public class Trip implements Serializable {
         this.longitude = (Double) tripMap.get("longitude");
         this.url = (String) tripMap.get("url");
         this.chat = (ArrayList<Message>) tripMap.get("chat");
+        this.privacy = (String) tripMap.get("privacy");
 
     }
 }

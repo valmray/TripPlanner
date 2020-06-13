@@ -73,6 +73,8 @@ public class OtherTripsActivity extends AppCompatActivity {
                                 String userId = (String) userMap.get("userId");
                                 String email = (String) userMap.get("email");
                                 String url = (String) userMap.get("url");
+                                String privacy = (String) userMap.get("privacy");
+
 
                                 user.firstName = firstName;
                                 user.lastName = lastName;
@@ -95,7 +97,7 @@ public class OtherTripsActivity extends AppCompatActivity {
                                 }
                             }
 
-                            if(onTrip == false)
+                            if(onTrip == false && trip.privacy.equals("public"))
                             {
                                 trips.add(trip);
                             }

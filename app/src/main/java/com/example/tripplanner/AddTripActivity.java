@@ -18,8 +18,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +96,10 @@ public class AddTripActivity extends AppCompatActivity implements MyInterface {
     ArrayList<String> allPlacesListS = new ArrayList<>();
     ArrayList<String> userPlacesListS = new ArrayList<>();
     ArrayList<String> planArrayListS = new ArrayList<>();
+
+    Switch privacy;
+    String privacy_text = "public";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +112,9 @@ public class AddTripActivity extends AppCompatActivity implements MyInterface {
         btn_createPlan = findViewById(R.id.btn_createPlan);
         findCity = findViewById(R.id.findCityAdd);
         cancel = findViewById(R.id.addTrip_btn_cancel);
+        privacy = findViewById(R.id.addTrip_switch);
 
-        SharedPreferences prefs = getSharedPreferences("info", MODE_PRIVATE);
+        final SharedPreferences prefs = getSharedPreferences("info", MODE_PRIVATE);
 
         Gson gson = new Gson();
         final User user = gson.fromJson(prefs.getString("user", null), User.class);
@@ -115,6 +122,21 @@ public class AddTripActivity extends AppCompatActivity implements MyInterface {
 
 
         getListOfFriends(userId);
+        privacy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b == true)
+                {
+                    privacy_text = "private";
+                    privacy.setText("Private");
+                }
+                else
+                {
+                    privacy_text = "public";
+                    privacy.setText("Public");
+                }
+            }
+        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,7 +270,8 @@ public class AddTripActivity extends AppCompatActivity implements MyInterface {
                             chosenPlace.latitude,
                             chosenPlace.longitude,
                             coverPhotoUrl,
-                            new ArrayList<Message>());
+                            new ArrayList<Message>(),
+                            privacy_text);
 
                     db.collection("trips").document(tripId).set(trip);
 

@@ -14,12 +14,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,10 +95,7 @@ public class EditTripPlanActivity extends AppCompatActivity {
         //userPlacesList = (ArrayList<Place>) getIntent().getSerializableExtra("User_Places");
         //planPlaceArrayList = (ArrayList<PlanPlace>) getIntent().getSerializableExtra("Plan_Place");
 
-        if(selectedTrip != null)
-        {
-            getCurrentPlan();
-        }
+
 
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
