@@ -48,13 +48,14 @@ public class EditProfileActivity extends AppCompatActivity {
     public EditText et_password_edit;
     public Bundle extrasFromDashboard;
     public ImageView iv_selectAvatar_edit;
-    public Button btn_updateProfile;
+    public Button btn_updateProfile, cancel;
     public int REQCODE = 5;
     public static final String EDIT_KEY = "avatar";
     public Bundle extrasFromSelectAvatar;
     public FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     public StorageReference storageReference = firebaseStorage.getReference();
     public String userId;
+    public String gender;
     public String selectedAvatarTagName;
 
     @Override
@@ -76,9 +77,17 @@ public class EditProfileActivity extends AppCompatActivity {
         rb_male = findViewById(R.id.rb_male_edit);
         iv_selectAvatar_edit = findViewById(R.id.iv_selectAvatar_edit);
         btn_updateProfile = findViewById(R.id.btn_editProfile);
+        cancel = findViewById(R.id.editProfile_btn_cancel);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         iv_selectAvatar_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +109,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         et_email_edit.setText(user.email);
                         Log.d(TAG, "user.getGender(): " + user.gender);
                         if(user.gender != null ) {
+                            gender = user.gender;
 
                             switch (user.gender) {
                                 case "female":
@@ -133,9 +143,10 @@ public class EditProfileActivity extends AppCompatActivity {
                 switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.rb_female_edit:
                         Log.d(TAG, "onCheckedChanged: " + "female");
-                        db.collection("users").document(userId).update("gender", "female");
+                        gender = "female";
                         break;
                     case R.id.rb_male_edit:
+                        gender = "male";
                         db.collection("users").document(userId).update("gender", "male");
                         break;
                     default:
@@ -223,6 +234,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     }
 
                 }
+
+                db.collection("users").document(userId).update("gender", gender);
 
                 if(!isErrorThrown[0]){
                     finish();

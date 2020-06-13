@@ -26,13 +26,13 @@ import java.util.Map;
 public class TripActivity extends AppCompatActivity {
     // Access a Cloud Firestore instance from your Activity
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public ImageView iv_coverPhoto_singleTrip;
+    public ImageView iv_coverPhoto_singleTrip, btn_viewMap;
     public Bundle extrasFromViewTrips;
     public TextView tv_title_singleTrip;
     public TextView tv_description_singleTrip;
     public TextView tv_location_singleTrip;
     public TextView tv_date_singleTrip;
-    public Button btn_joinTrip, btn_viewMap;
+    public Button btn_joinTrip, back;
     public ArrayList<User> friends = new ArrayList<User>();
     public FirebaseAuth mAuth;
     public String userId;
@@ -58,6 +58,7 @@ public class TripActivity extends AppCompatActivity {
         btn_joinTrip = findViewById(R.id.btn_join);
         iv_coverPhoto_singleTrip = findViewById(R.id.iv_coverPhoto_join);
         btn_viewMap = findViewById(R.id.btn_ViewOnMap);
+        back = findViewById(R.id.viewTrip_btn_back);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -78,6 +79,15 @@ public class TripActivity extends AppCompatActivity {
 
                     }
                 });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TripActivity.this, OtherTripsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btn_viewMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,10 +146,12 @@ public class TripActivity extends AppCompatActivity {
                                     db.collection("users").document(userId).collection("trips").document(selectedTrip.trip_id).set(selectedTrip);
                                 }
 
+                                Log.d(TAG, "Selected User: " + newUser.toString());
                             }
+
+                            finish();
                         }
 
-                        Log.d(TAG, "Selected User: " + newUser.toString());
                     }
                 });
 

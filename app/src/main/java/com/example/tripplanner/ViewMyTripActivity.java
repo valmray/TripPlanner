@@ -15,9 +15,12 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,10 +32,11 @@ public class ViewMyTripActivity extends AppCompatActivity {
     public ImageView iv_deleteTrip;
     public ImageView iv_chatTrip;
     public ImageView iv_coverPhoto_view_myTrip, view_map, edit_trip;
-    public Button leave_trip;
+    public Button leave_trip, back;
     public Bundle extrasFromMyTrips;
     // Access a Cloud Firestore instance from your Activity
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public ArrayList<Message> chats  = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +55,12 @@ public class ViewMyTripActivity extends AppCompatActivity {
         view_map = findViewById(R.id.btn_viewOnMap);
         leave_trip = findViewById(R.id.btn_LeaveTrip);
         edit_trip = findViewById(R.id.btn_editTrip);
+        back = findViewById(R.id.viewMyTrip_btn_back);
 
         extrasFromMyTrips = getIntent().getExtras().getBundle("bundleData");
 
         final Trip selectedTrip = (Trip) extrasFromMyTrips.getSerializable("selectedTrip");
+        getChats(selectedTrip);
 
 
         tv_title_view_myTrip.setText(selectedTrip.title);
@@ -69,9 +75,36 @@ public class ViewMyTripActivity extends AppCompatActivity {
         final User user = gson.fromJson(prefs.getString("user", null), User.class);
         final String userId = user.userId;
 
+        Log.d("Trip User ID", selectedTrip.user_id);
+
+        if(userId.equals(selectedTrip.user_id))
+        {
+            leave_trip.setVisibility(View.GONE);
+        }
+        else
+        {
+            iv_deleteTrip.setVisibility(View.GONE);
+            edit_trip.setVisibility(View.GONE);
+        }
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewMyTripActivity.this, MyTripsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         iv_deleteTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                for(int i = 0; i < selectedTrip.people.size(); i++)
+                {
+                    String id = (String)((Map)selectedTrip.people.get(i)).get("userId");
+                    db.collection("users").document(id).collection("trips").document(selectedTrip.trip_id).delete();
+                }
 
                 db.collection("trips").document(selectedTrip.trip_id).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -80,21 +113,14 @@ public class ViewMyTripActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+
+                for(int i = 0; i < chats.size(); i++)
+                {
+                    db.collection("chats").document(chats.get(i).messageId).delete();
+                }
+
             }
         });
-
-        Log.d("Trip User ID", selectedTrip.user_id);
-        if(userId.equals(selectedTrip.user_id))
-        {
-            Log.d("Trip User ID", selectedTrip.user_id);
-
-            leave_trip.setVisibility(View.GONE);
-        }
-        else
-        {
-            iv_deleteTrip.setVisibility(View.GONE);
-            edit_trip.setVisibility(View.GONE);
-        }
 
         edit_trip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +162,8 @@ public class ViewMyTripActivity extends AppCompatActivity {
 
                     db.collection("users").document(userId).collection("trips").document(selectedTrip.trip_id).set(selectedTrip);
                 }
+
+                finish();
             }
         });
 
@@ -157,6 +185,26 @@ public class ViewMyTripActivity extends AppCompatActivity {
                 intent.putExtra("Request", "show");
                 intent.putExtra("Trip", selectedTrip);
                 startActivity(intent);
+            }
+        });
+    }
+
+    public void getChats(final Trip trip)
+    {
+        db.collection("chats").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Message message = new Message(document.getData());
+
+                        if(message.tripId.equals(trip.trip_id))
+                        {
+                            chats.add(message);
+                            Log.d("Message", message.message);
+                        }
+                    }
+                }
             }
         });
     }

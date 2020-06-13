@@ -11,37 +11,45 @@
         android:id="@+id/edit_cityPlacesLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="100dp"
-            android:layout_height="25dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Places In City:"
+            android:orientation="vertical">
 
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:text="Places In City:"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="4dp"
 
-        <Spinner
-            android:id="@+id/edit_allPlacesSpinner"
-            android:layout_width="150dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            android:layout_weight="1" />
+            <Spinner
+                android:id="@+id/edit_allPlacesSpinner"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+
+                android:layout_weight="1" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/edit_addPlaceFromAllButton"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
+            android:layout_marginTop="8dp"
 
             android:text="Add Place" />
     </LinearLayout>
@@ -50,7 +58,7 @@
         android:id="@+id/edit_tripPlanLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,37 +70,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:text="Add places you chose in the order you'd like to visit them"
-            android:textAppearance="@style/TextAppearance.AppCompat" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/tertiary_text_dark"
+            android:textStyle="bold" />
 
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="24dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="167dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Your Places:"
-                android:textAlignment="center"
+                android:orientation="vertical">
 
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:text="Your Places:"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="16dp"
 
-            <Spinner
-                android:id="@+id/edit_userPlacesSpinner"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-                android:layout_weight="1" />
+                <Spinner
+                    android:id="@+id/edit_userPlacesSpinner"
+                    android:layout_width="220dp"
+                    android:layout_height="40dp"
+
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/edit_addPlaceToPlanButton"
@@ -100,7 +121,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
 
-                android:text="Add" />
+                android:text="Add Plan" />
 
             <ImageButton
                 android:id="@+id/edit_deleteUserPlaceButton"
@@ -116,14 +137,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Trip Plan List: (Scrollable List)"
+            android:text="Trip Plan List (Scrollable List):"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <ListView
             android:id="@+id/edit_listViewAdd"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginBottom="16dp"
 
             android:layout_weight="1">
 
@@ -159,7 +183,7 @@
         android:id="@+id/edit_btn_done"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="Done"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.372"
@@ -170,11 +194,10 @@
         android:id="@+id/edit_btn_cancel"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="56dp"
         android:text="@string/btn_cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_tripPlanLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

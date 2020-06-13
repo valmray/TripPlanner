@@ -31,6 +31,7 @@ public class OtherTripsActivity extends AppCompatActivity {
     public String userId;
     boolean comp = false;
     ArrayList<User> people = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +115,7 @@ public class OtherTripsActivity extends AppCompatActivity {
                             bundle.putSerializable("selectedTrip", trips.get(i));
                             intentToViewTrip.putExtra("bundleData", bundle);
                             startActivity(intentToViewTrip);
+                            finish();
                         }
                     });
 

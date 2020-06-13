@@ -45,6 +45,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class ChatRoomActivity extends AppCompatActivity {
@@ -206,26 +207,15 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
         //hashMap.put(message.messageId, messages);
-        db.collection("chats").add(message).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
+        db.collection("chats").document(message.messageId).set(message);
 
-            }
-        });
+        for(int i = 0; i < selectedTrip.people.size(); i++)
+        {
+            String cUserId = (String)((Map)selectedTrip.people.get(i)).get("userId");
+            db.collection("users").document(cUserId).collection("trips").document(selectedTrip.trip_id).collection("chat").document(message.messageId).set(message);
+        }
 
-        db.collection("users").document(userId).collection("trips").document(selectedTrip.trip_id).collection("chat").add(message).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-
-            }
-        });
-
-        db.collection("trips").document(selectedTrip.trip_id).collection("chat").add(message).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-
-            }
-        });
+        db.collection("trips").document(selectedTrip.trip_id).collection("chat").document(message.messageId).set(message);
 
     }
 

@@ -4,56 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
-    <TextView
-        android:id="@+id/tv_firstName"
-        android:layout_width="105dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="34dp"
-        android:text="@string/tv_firstName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_selectAvatar" />
+    tools:context=".SignUpActivity"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/et_firstName"
-        android:layout_width="215dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginRight="28dp"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
+        android:hint="Enter First Name"
         android:inputType="textPersonName"
         android:text="@string/et_firstName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_selectAvatar" />
 
-    <TextView
-        android:id="@+id/tv_lastName"
-        android:layout_width="103dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/tv_lastName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_firstName" />
 
     <EditText
         android:id="@+id/et_lastName"
-        android:layout_width="wrap_content"
+        android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Enter Last Name"
         android:inputType="textPersonName"
         android:text="@string/et_lastName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_firstName" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="288dp"
         android:layout_height="33dp"
-        android:layout_marginLeft="59dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="32dp"
         android:layout_marginRight="64dp"
         android:orientation="horizontal"
@@ -78,54 +64,37 @@
         android:id="@+id/btn_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="68dp"
         android:text="@string/btn_signUp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.987"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_newUser_password" />
 
-    <TextView
-        android:id="@+id/tv_newUser_email"
-        android:layout_width="109dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/tv_newUser_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
     <EditText
         android:id="@+id/et_newUser_email"
-        android:layout_width="235dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Enter Email"
         android:inputType="textPersonName"
         android:text="@string/et_newUser_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <TextView
-        android:id="@+id/tv_newUser_password"
-        android:layout_width="110dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/tv_password"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_newUser_email" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
         android:id="@+id/et_newUser_password"
-        android:layout_width="235dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="32dp"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="Enter Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_newUser_email" />
 
     <ImageView
@@ -137,4 +106,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/camera" />
+
+    <Button
+        android:id="@+id/signUp_btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="Cancel"
+        app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_newUser_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>

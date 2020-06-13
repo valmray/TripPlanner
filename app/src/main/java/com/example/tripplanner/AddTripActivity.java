@@ -48,7 +48,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class AddTripActivity extends AppCompatActivity implements MyInterface {
-    public Button btn_AddFriends, btn_createPlan;
+    public Button btn_AddFriends, btn_createPlan, cancel;
     public ArrayList<User> users = new ArrayList<User>();
     public String TAG = "demo";
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -105,6 +105,7 @@ public class AddTripActivity extends AppCompatActivity implements MyInterface {
         btn_AddFriends = findViewById(R.id.btn_addFriends);
         btn_createPlan = findViewById(R.id.btn_createPlan);
         findCity = findViewById(R.id.findCityAdd);
+        cancel = findViewById(R.id.addTrip_btn_cancel);
 
         SharedPreferences prefs = getSharedPreferences("info", MODE_PRIVATE);
 
@@ -114,6 +115,13 @@ public class AddTripActivity extends AppCompatActivity implements MyInterface {
 
 
         getListOfFriends(userId);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         btn_AddFriends.setOnClickListener(new View.OnClickListener() {
             @Override

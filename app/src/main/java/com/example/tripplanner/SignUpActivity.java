@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
     public RadioButton rb_female;
     public RadioButton rb_male;
     public RadioGroup rg_gender;
-    public Button btn_signUp;
+    public Button btn_signUp, cancel;
     public FirebaseAuth mAuth;
     public String TAG = "demo";
     public String userId;
@@ -83,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
         rb_male = findViewById(R.id.rb_male);
         btn_signUp = findViewById(R.id.btn_edit);
         iv_selectAvatar = findViewById(R.id.iv_selectAvatar);
+        cancel = findViewById(R.id.signUp_btn_cancel);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -95,6 +96,13 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivityForResult(intentToSelectAvatar, REQ_CODE);
             }
 
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
         });
 
         rg_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

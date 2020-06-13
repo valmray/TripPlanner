@@ -5,82 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CoverPhotoLibrary">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:baselineAligned="true"
-        android:orientation="vertical"
-        android:textAlignment="center">
 
-        <ImageView
-            android:id="@+id/iv_alaska"
-            android:layout_width="match_parent"
-            android:layout_height="121dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="73dp"
-            app:srcCompat="@drawable/alaska" />
+    <ImageView
+        android:id="@+id/iv_alaska"
+        android:layout_width="197dp"
+        android:layout_height="121dp"
 
-        <ImageView
-            android:id="@+id/iv_borabora"
-            android:layout_width="198dp"
-            android:layout_height="119dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="213dp"
-            android:layout_marginEnd="8dp"
-            app:srcCompat="@drawable/borabora" />
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/alaska" />
 
-        <ImageView
-            android:id="@+id/iv_cappadocia"
-            android:layout_width="197dp"
-            android:layout_height="127dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="-4dp"
-            android:layout_marginTop="211dp"
-            android:textAlignment="center"
-            app:srcCompat="@drawable/cappadocia" />
+    <ImageView
+        android:id="@+id/iv_borabora"
+        android:layout_width="168dp"
+        android:layout_height="100dp"
 
-        <ImageView
-            android:id="@+id/iv_calvin"
-            android:layout_width="191dp"
-            android:layout_height="131dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="393dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cavin" />
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_grandCanyon"
+        app:srcCompat="@drawable/borabora" />
 
-        <ImageView
-            android:id="@+id/iv_colombia"
-            android:layout_width="190dp"
-            android:layout_height="112dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="18dp"
-            android:layout_marginBottom="28dp"
-            app:srcCompat="@drawable/colombia" />
+    <ImageView
+        android:id="@+id/iv_cappadocia"
+        android:layout_width="167dp"
+        android:layout_height="110dp"
 
-        <ImageView
-            android:id="@+id/iv_grandCanyon"
-            android:layout_width="191dp"
-            android:layout_height="131dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="18dp"
-            app:srcCompat="@drawable/grandcanyonofthecoloradoar" />
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="24dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/iv_borabora"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_calvin"
+        app:srcCompat="@drawable/cappadocia" />
 
-        <ImageView
-            android:id="@+id/iv_snowBoard"
-            android:layout_width="191dp"
-            android:layout_height="131dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="-2dp"
-            android:layout_marginTop="392dp"
-            app:srcCompat="@drawable/snowboard" />
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/iv_calvin"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_snowBoard"
+        app:srcCompat="@drawable/cavin" />
+
+    <ImageView
+        android:id="@+id/iv_colombia"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_alaska"
+        app:srcCompat="@drawable/colombia" />
+
+    <ImageView
+        android:id="@+id/iv_grandCanyon"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/iv_calvin"
+        app:layout_constraintTop_toBottomOf="@+id/iv_colombia"
+        app:srcCompat="@drawable/grandcanyonofthecoloradoar" />
+
+    <ImageView
+        android:id="@+id/iv_snowBoard"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_colombia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_alaska"
+        app:srcCompat="@drawable/snowboard" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

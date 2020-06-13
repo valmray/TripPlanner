@@ -43,7 +43,7 @@ import java.util.Map;
 
 public class EditTripActivity extends AppCompatActivity implements MyInterface{
     Trip selectedTrip;
-    Button changeLoc, save, addRemove, editPlan;
+    Button changeLoc, save, addRemove, editPlan, cancel;
     EditText title, descriptionEdit, date;
     TextView cityText;
     ImageView tripImage;
@@ -109,6 +109,7 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
         save = findViewById(R.id.edit_saveChanges);
         addRemove = findViewById(R.id.btn_editParticipants);
         editPlan = findViewById(R.id.btn_editTripPlan);
+        cancel = findViewById(R.id.edit_btn_cancel);
 
         title = findViewById(R.id.edit_tripTitle);
         descriptionEdit = findViewById(R.id.edit_tripDescription);
@@ -132,6 +133,18 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
                 "type=restaurant&key=" + BuildConfig.GMAPS_CONSUMER_SECRET;
 
         new GetPlacesAsync(EditTripActivity.this, db, EditTripActivity.this).execute(link);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditTripActivity.this, ViewMyTripActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("selectedTrip", selectedTrip);
+                intent.putExtra("bundleData", bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         tripImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,12 +286,17 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
                 setNewPlan(trip);
 
 
+                //The people array has a Map object and a User object which causes an error
+               /* Intent intent = new Intent(EditTripActivity.this, ViewMyTripActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("selectedTrip", trip);
+                intent.putExtra("bundleData", bundle);
+                startActivity(intent);*/
 
-                //Intent intent = new Intent(EditTripActivity.this, ViewMyTripActivity.class);
-                //Bundle bundle = new Bundle();
-                //bundle.putSerializable("selectedTrip", trip);
-                //intent.putExtra("bundleData", bundle);
-                //startActivity(intent);
+                Intent intent = new Intent(EditTripActivity.this, MapsActivity.class);
+                intent.putExtra("Request", "show");
+                intent.putExtra("Trip", trip);
+                startActivity(intent);
                 finish();
 
             }
@@ -628,6 +646,9 @@ public class EditTripActivity extends AppCompatActivity implements MyInterface{
 
     @Override
     public void addAllPlaces(ArrayList<Place> places) {
+        allPlacesList.clear();
+        allPlacesListS.clear();
+
         for(int i = 0; i < places.size(); i++)
         {
             boolean valid = false;
