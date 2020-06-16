@@ -2,7 +2,8 @@ Trip Planner
 
 Description:
 
-- Allows user to plan trips with friends(other users).
+- Allows user to plan trips with friends(other users). Allows the users to add and explore trips based on their interests.
+  Additionally, this application facilitates its users to create chat rooms where they can exchange texts and discuss their travel plans.
 
 
 Prerequisites:
