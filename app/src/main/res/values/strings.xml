@@ -26,7 +26,7 @@
     <string name="tv_user_email" />
     <string name="btn_addTrip">Add Trip</string>
     <string name="btn_removeTrip">Remove Trip</string>
-    <string name="btn_trips">Trips</string>
+    <string name="btn_trips">Explore Trips</string>
     <string name="tv_title">Title:</string>
     <string name="et_title">Title</string>
     <string name="tv_description">Description:</string>
